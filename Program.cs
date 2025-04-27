@@ -15,8 +15,10 @@ namespace ConsoleApp1
                 var llama = new LlamaCppModel(
                     "models/tinyllama-1.1b-chat-v1.0.Q4_K_M.gguf", 
                     "models/llama-cli.exe");
+
                 var output = llama.GenerateText(
                     question);
+
                 Console.WriteLine(output);
             }
         }
