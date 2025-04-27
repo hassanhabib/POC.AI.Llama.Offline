@@ -5,15 +5,15 @@ namespace OfflineAI
 {
     public class LlamaCppModel : IOfflineAIModel
     {
-        private readonly string _modelPath;
-        private readonly string _executablePath;
+        private readonly string modelPath;
+        private readonly string executablePath;
 
         public LlamaCppModel(
             string modelPath,
             string executablePath = "llama-cli.exe")
         {
-            _modelPath = modelPath;
-            _executablePath = executablePath;
+            this.modelPath = modelPath;
+            this.executablePath = executablePath;
         }
 
         public string GenerateText(string prompt, int maxTokens = 1024)
@@ -22,8 +22,8 @@ namespace OfflineAI
 
             var psi = new ProcessStartInfo
             {
-                FileName = _executablePath,
-                Arguments = $"--model \"{_modelPath}\" --prompt \"{prompt}\" --n-predict {maxTokens}",
+                FileName = executablePath,
+                Arguments = $"--model \"{modelPath}\" --prompt \"{prompt}\" --n-predict {maxTokens}",
                 RedirectStandardOutput = true,
                 RedirectStandardError = true,
                 UseShellExecute = false,
